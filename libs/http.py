@@ -19,4 +19,8 @@ def serve_httpd():
 
     httpd = HTTPServer((HOST, PORT), HttpHandler)
     print "Serving in http://%s:%s" % (HOST, PORT)
-    httpd.serve_forever()
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print "Receiving Terminate Signal"
+    httpd.server_close()
