@@ -6,5 +6,7 @@ urlpatterns = [
     ("/$", info.index),
     ("^/version$", info.version),
     ("^/console/$", console.index),
-    ("^/static/(?P<path>.*?)$", static_response)
+    ("^/static/(?P<path>.*?)$", static_response),
+    ("^/component/(?P<path>.*?)$", console.component),
+    
 ]

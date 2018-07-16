@@ -23,8 +23,10 @@ def template_response(request, template, payload={}, code=200):
     template_path = os.path.join(BASE_DIR, "templates/%s" % template)
     return_response(request, open(template_path).read(), code=code)
     
-def static_response(request, path):
+def static_response(request, path, base_dir=None):
     static_path  = os.path.join(BASE_DIR, "static")
+    if base_dir:
+        static_path  = os.path.join(BASE_DIR, base_dir)
     path = os.path.join(static_path, path)
     if os.path.isfile(path):
         with open(path, 'rb') as content_file:
